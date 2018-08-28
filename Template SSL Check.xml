@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>3.4</version>
+    <date>2018-08-28T08:13:58Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template SSL Check</template>
+            <name>Template SSL Check</name>
+            <description/>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Certificate Check</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>SSL Cert Check</name>
+                    <type>10</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>ssl_check.sh[{$SSL_HOST},{$SSL_PORT}]</key>
+                    <delay>86400</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>days</units>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Certificate Check</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+            </items>
+            <discovery_rules/>
+            <httptests/>
+            <macros>
+                <macro>
+                    <macro>{$SSL_HOST}</macro>
+                    <value>una.md</value>
+                </macro>
+                <macro>
+                    <macro>{$SSL_PORT}</macro>
+                    <value>443</value>
+                </macro>
+            </macros>
+            <templates/>
+            <screens/>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>{Template SSL Check:ssl_check.sh[{$SSL_HOST},{$SSL_PORT}].last()}&lt;14 and {Template SSL Check:ssl_check.sh[{$SSL_HOST},{$SSL_PORT}].last()}&gt;=3</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>SSL Certificate for {$SSL_HOST} Expires in {ITEM.VALUE} days</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template SSL Check:ssl_check.sh[{$SSL_HOST},{$SSL_PORT}].last()}&lt;32 and {Template SSL Check:ssl_check.sh[{$SSL_HOST},{$SSL_PORT}].last()}&gt;=14</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>SSL Certificate for {$SSL_HOST} Expires in {ITEM.VALUE} days</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template SSL Check:ssl_check.sh[{$SSL_HOST},{$SSL_PORT}].last()}&lt;64 and {Template SSL Check:ssl_check.sh[{$SSL_HOST},{$SSL_PORT}].last()}&gt;=32</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>SSL Certificate for {$SSL_HOST} Expires in {ITEM.VALUE} days</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template SSL Check:ssl_check.sh[{$SSL_HOST},{$SSL_PORT}].last(0)}&lt;3</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>SSL Certificate for {$SSL_HOST} Expires in {ITEM.VALUE} days</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+    </triggers>
+</zabbix_export>
