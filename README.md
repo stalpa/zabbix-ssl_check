@@ -4,7 +4,7 @@ additional info
 https://www.null-byte.org/development/monitoring-ssl-certificates-with-zabbix/
  https://blog.mailon.com.ua/%D0%BC%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3-ssl-%D1%81%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2-%D0%B2-zabbix/
 
-> nano /usr/lib/zabbix/externalscripts/ssl_check.sh
+> nano /usr/lib/zabbix/externalscripts/ssl_check.sh 
 
 #! /bin/sh
 SERVER=$1
@@ -26,7 +26,6 @@ RETVAL=0
 else
 RETVAL=$(( ${EXPIRE_TIME} / 24 / 3600 ))
 fi
- 
 echo "$TIMESTAMP | $SERVER:$PORT expires in $RETVAL days" >> /usr/lib/zabbix/externalscripts/ssl_check.log
 echo ${RETVAL}
 
